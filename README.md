@@ -4,7 +4,7 @@ I build **identity and payment infrastructure for the agentic web** — end-to-e
 
 > **The throughline:** x402 proves an agent *paid* · my settlement-receipt binding proves the payment maps to the *action* · **PoR** proves the actor is a *real, human-backed* entity. Together that's a **verified agent** — and I've shipped a working piece of every layer.
 
-*Right now: FairLine in **Sui Overflow 2026**, and co-authoring an **x402 standard extension** with [@vaaraio](https://github.com/vaaraio).*
+*Right now: **x402-sui-stack** and **FairLine** in **Sui Overflow 2026**, and co-authoring an **x402 standard extension** with [@vaaraio](https://github.com/vaaraio).*
 
 ---
 
@@ -15,6 +15,7 @@ A Sui-native proof-of-personhood credential: prove you're a real, unique human (
 - **[por-proof-of-real.netlify.app](https://por-proof-of-real.netlify.app)** · *mainnet contracts, testnet attestor — personhood, not "sybil-proof"*
 
 ### ⚡ x402 on Sui — the payments layer
+- **[x402-sui-stack](https://x402-sui-stack.netlify.app)** — the x402 builder stack for Sui (**Sui Overflow 2026**): the facilitator + tooling + a one-command demo that settles a real $0.01 USDC payment on **mainnet** and lets anyone recompute it in-browser → [live](https://x402-sui-stack.netlify.app) · [code](https://github.com/DrVelvetFog/x402-sui-stack)
 - **First x402 facilitator to settle on Sui** — non-custodial, zero-fee, live on **mainnet** → [sui-x402-facilitator](https://github.com/DrVelvetFog/sui-x402-facilitator) · [live facilitator](https://sui-facilitator.onrender.com)
 - **Co-authoring an x402 standard extension** — *Settlement-Receipt Binding*: bind an on-chain settlement to a signed execution receipt, recomputable from published bytes with an independent verifier → [x402-foundation/x402#2666](https://github.com/x402-foundation/x402/pull/2666)
 - **[x402-pilot](https://github.com/DrVelvetFog/x402-pilot)** — an open-source, non-custodial x402 dev tool + conformance MCP (Apache-2.0)

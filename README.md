@@ -4,14 +4,15 @@ I build **identity and payment infrastructure for the agentic web** — end-to-e
 
 > **The throughline:** x402 proves an agent *paid* · my settlement-receipt binding proves the payment maps to the *action* · **PoR** proves the actor is a *real, human-backed* entity. Together that's a **verified agent** — and I've shipped a working piece of every layer.
 
-*Right now: **x402-sui-stack** and **FairLine** in **Sui Overflow 2026**, and co-authoring an **x402 standard extension** with [@vaaraio](https://github.com/vaaraio).*
+*Right now: my **x402 Settlement-Receipt Binding** extension is [ready-for-review](https://github.com/x402-foundation/x402/pull/2666) with independent implementers building against it — and I'm taking the same settlement-semantics work cross-rail to **Solana / SVM**.*
 
 ---
 
 ### 🪪 Proof of Real (PoR) — flagship
 A Sui-native proof-of-personhood credential: prove you're a real, unique human (passkey + zkLogin onboarding, no personal data captured) and raise your assurance through verifiable real-world actions.
 - Live credential, attestor & Move package · SDK on npm → [`por-sdk`](https://www.npmjs.com/package/por-sdk) (Apache-2.0)
-- Live in production today, Sybil-gating real users in a shipped app
+- **Device-attested real-world action** — App Attest proven on a real iPhone: a walk mints an on-chain *Verified Real* credential, end-to-end (one credential per attested device)
+- Sybil-gating a live integration (Acre) — the credential gate runs in a shipped app, on-chain
 - **[por-proof-of-real.netlify.app](https://por-proof-of-real.netlify.app)** · *mainnet contracts, testnet attestor — personhood, not "sybil-proof"*
 
 ### ⚡ x402 on Sui — the payments layer
@@ -30,7 +31,7 @@ A risk-managed, multi-user liquidity vault on **DeepBook Predict** — "be the h
 - **[Acre](https://acre-game.netlify.app)** — a "walk your city" Sui game with gasless onboarding, **Sybil-gated by PoR** (live testnet)
 - **[Gulp City](https://gulp-city.netlify.app)** — an installable 3D PWA arcade game
 - **[Jamie Buddy](https://uigstudios.gumroad.com/l/jamie)** — a local-LLM writing assistant
-- **Yomp** — an on-chain move-to-earn fitness app (Sui testnet) that feeds PoR's real-world-action layer
+- **Yomp** — the consumer front door for PoR: *walk to prove you're real* (Sui testnet). The walk is what mints the credential's real-world-action tier.
 
 ---
 

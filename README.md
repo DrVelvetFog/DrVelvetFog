@@ -4,7 +4,7 @@ I build **identity and payment infrastructure for the agentic web** — end-to-e
 
 > **The throughline:** x402 proves an agent *paid* · my settlement-receipt binding proves the payment maps to the *action* · **PoR** proves the actor is a *real, human-backed* entity. Together that's a **verified agent** — and I've shipped a working piece of every layer.
 
-*Right now: my **x402 Settlement-Receipt Binding** extension is [ready-for-review](https://github.com/x402-foundation/x402/pull/2666) with independent implementers building against it — and I'm taking the same settlement-semantics work cross-rail to **Solana / SVM**.*
+*Right now: my **x402 Settlement-Receipt Binding** extension is [ready-for-review](https://github.com/x402-foundation/x402/pull/2666) with independent implementers building against it — and I'm taking the same settlement-semantics work cross-rail to **Solana / SVM**, now running end-to-end in an [x402 charging agent](https://github.com/DrVelvetFog/x402-charging-agent) (an EV that pays for its own charge — mainnet on Sui, settling on Solana devnet).*
 
 ---
 
@@ -20,6 +20,13 @@ A Sui-native proof-of-personhood credential: prove you're a real, unique human (
 - **x402 facilitator that settles on Sui** — non-custodial, zero-fee, live on **mainnet** → [sui-x402-facilitator](https://github.com/DrVelvetFog/sui-x402-facilitator) · [live facilitator](https://sui-facilitator.onrender.com)
 - **Co-authoring an x402 standard extension** — *Settlement-Receipt Binding*: bind an on-chain settlement to a signed execution receipt, recomputable from published bytes with an independent verifier → [x402-foundation/x402#2666](https://github.com/x402-foundation/x402/pull/2666)
 - **[x402-pilot](https://github.com/DrVelvetFog/x402-pilot)** — an open-source, non-custodial x402 dev tool + conformance MCP (Apache-2.0)
+
+### 🔌 x402 Charging Agent — the thesis, end-to-end
+An EV that pays for its own charge, no human in the loop — the whole stack composed in one artifact:
+- **x402 `upto`** metered billing + my **Settlement-Receipt Binding** (#2666) over a *real-world action* — authorize a ceiling, meter the kWh, settle the actual, emit a receipt an independent checker verifies
+- **PoR-gated** — only a verified human's agent may charge (the personhood layer, live)
+- **mainnet-proven on Sui**, also settling on **Solana devnet**; bridged to real charging networks via **OCPI** (DeCharge / Starpower-ready)
+- **[x402-charging-agent](https://github.com/DrVelvetFog/x402-charging-agent)** · *vehicle + charging network mocked behind their real interfaces*
 
 ### 🌊 FairLine — Sui Overflow 2026, DeepBook track
 A risk-managed, multi-user liquidity vault on **DeepBook Predict** — "be the house, verifiably": senior/junior tranches, capacity cap, on-chain reserve floor + emergency pause, redemption-anchored NAV.

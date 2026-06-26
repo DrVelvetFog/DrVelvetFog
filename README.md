@@ -1,6 +1,6 @@
 # Tony Jagodka
 
-I build **identity and payment infrastructure for the agentic web** — end-to-end and solo, under [UIG Studios LLC](https://uigstudios.netlify.app). Most of it ships on **Sui**.
+I build **identity and payment infrastructure for the agentic web** — end-to-end and solo, under [UIG Studios LLC](https://uigstudios.netlify.app). Shipped deepest on **Sui**, taking the same settlement-semantics work cross-rail to **Solana / SVM** and **EVM**.
 
 > **The throughline:** x402 proves an agent *paid* · my settlement-receipt binding proves the payment maps to the *action* · **PoR** proves the actor is a *real, human-backed* entity. Together that's a **verified agent** — and I've shipped a working piece of every layer.
 
@@ -15,10 +15,11 @@ A Sui-native proof-of-personhood credential: prove you're a real, unique human (
 - Sybil-gating a live integration (Acre) — the credential gate runs in a shipped app, on-chain
 - **[por-proof-of-real.netlify.app](https://por-proof-of-real.netlify.app)** · *mainnet contracts, testnet attestor — personhood, not "sybil-proof"*
 
-### ⚡ x402 on Sui — the payments layer
+### ⚡ x402 / agent payments — the payments layer
 - **[x402-sui-stack](https://x402-sui-stack.netlify.app)** — the x402 builder stack for Sui (**Sui Overflow 2026**): the facilitator + tooling + a one-command demo that settles a real $0.01 USDC payment on **mainnet** and lets anyone recompute it in-browser → [live](https://x402-sui-stack.netlify.app) · [code](https://github.com/DrVelvetFog/x402-sui-stack)
 - **x402 facilitator that settles on Sui** — non-custodial, zero-fee, live on **mainnet** → [sui-x402-facilitator](https://github.com/DrVelvetFog/sui-x402-facilitator) · [live facilitator](https://sui-facilitator.onrender.com)
 - **Co-authoring an x402 standard extension** — *Settlement-Receipt Binding*: bind an on-chain settlement to a signed execution receipt, recomputable from published bytes with an independent verifier → [x402-foundation/x402#2666](https://github.com/x402-foundation/x402/pull/2666)
+- **Taking the standard cross-rail** — shaping a `verify()`-soundness invariant on the Hedera mechanism ([#2701](https://github.com/x402-foundation/x402/issues/2701)) and Solana's allowance-draw / `upto` design ([#2699](https://github.com/x402-foundation/x402/issues/2699)); one settlement-receipt binding, multiple rails (EVM · SVM · Sui)
 - **[x402-pilot](https://github.com/DrVelvetFog/x402-pilot)** — an open-source, non-custodial x402 dev tool + conformance MCP (Apache-2.0)
 
 ### 🔌 x402 Charging Agent — the thesis, end-to-end

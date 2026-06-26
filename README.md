@@ -43,8 +43,8 @@ A risk-managed, multi-user liquidity vault on **DeepBook Predict** — "be the h
 ---
 
 ### Work with me
-Open to **grants, contract & consulting** on Sui — identity, x402 / agentic payments, and shipped on-chain product.
+Open to **grants, contract, consulting & engineering roles** on Sui — identity, x402 / agentic payments, and shipped on-chain product.
 
-📫 **tjagodka@gmail.com** · 𝕏 [@DrVelvetFog](https://x.com/DrVelvetFog) · 🌐 [portfolio](https://tony-jagodka.netlify.app) · 🏢 [UIG Studios](https://uigstudios.netlify.app)
+📫 **tjagodka@gmail.com** · 𝕏 [@DrVelvetFog](https://x.com/DrVelvetFog) · 🌐 [portfolio](https://tony-jagodka.netlify.app) · 💼 [Algora](https://algora.io/DrVelvetFog) · 🏢 [UIG Studios](https://uigstudios.netlify.app)
 
 *Lines I don't cross: no custody · no token-for-money sales · no PII capture · honest labeling (testnet/unaudited stated plainly).*

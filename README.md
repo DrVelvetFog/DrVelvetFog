@@ -19,7 +19,7 @@ A Sui-native proof-of-personhood credential: prove you're a real, unique human (
 - **[x402-sui-stack](https://x402-sui-stack.netlify.app)** — the x402 builder stack for Sui (**Sui Overflow 2026**): the facilitator + tooling + a one-command demo that settles a real $0.01 USDC payment on **mainnet** and lets anyone recompute it in-browser → [live](https://x402-sui-stack.netlify.app) · [code](https://github.com/DrVelvetFog/x402-sui-stack)
 - **x402 facilitator that settles on Sui** — non-custodial, zero-fee, live on **mainnet** → [sui-x402-facilitator](https://github.com/DrVelvetFog/sui-x402-facilitator) · [live facilitator](https://sui-facilitator.onrender.com)
 - **Co-authoring an x402 standard extension** — *Settlement-Receipt Binding*: bind an on-chain settlement to a signed execution receipt, recomputable from published bytes with an independent verifier → [x402-foundation/x402#2666](https://github.com/x402-foundation/x402/pull/2666)
-- **Taking the standard cross-rail** — shaping a `verify()`-soundness invariant on the Hedera mechanism ([#2701](https://github.com/x402-foundation/x402/issues/2701)) and Solana's allowance-draw / `upto` design ([#2699](https://github.com/x402-foundation/x402/issues/2699)); one settlement-receipt binding, multiple rails (EVM · SVM · Sui)
+- **Taking the standard cross-rail** — a [conformance demo for Solana's `upto` scheme](https://github.com/solana-foundation/x402/pull/3) proving settlement-receipt binding on SVM, plus shaping the `verify()`-soundness invariant on Hedera ([#2701](https://github.com/x402-foundation/x402/issues/2701)) and Solana's allowance-draw design ([#2699](https://github.com/x402-foundation/x402/issues/2699)); one binding, multiple rails (EVM · SVM · Sui)
 - **[x402-pilot](https://github.com/DrVelvetFog/x402-pilot)** — an open-source, non-custodial x402 dev tool + conformance MCP (Apache-2.0)
 
 ### 🔌 x402 Charging Agent — the thesis, end-to-end
@@ -44,7 +44,7 @@ A risk-managed, multi-user liquidity vault on **DeepBook Predict** — "be the h
 ---
 
 ### Work with me
-Open to **grants, contract, consulting & engineering roles** on Sui — identity, x402 / agentic payments, and shipped on-chain product.
+**Available for contract, consulting, grants & engineering roles** — identity and x402 / agentic payments, **across Sui, Solana/SVM and EVM**. Deepest on Sui, actively building cross-rail.
 
 📫 **tjagodka@gmail.com** · 𝕏 [@DrVelvetFog](https://x.com/DrVelvetFog) · 🌐 [portfolio](https://tony-jagodka.netlify.app) · 💼 [Algora](https://algora.io/DrVelvetFog) · 🏢 [UIG Studios](https://uigstudios.netlify.app)
 

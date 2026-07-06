@@ -18,8 +18,7 @@ A Sui-native proof-of-personhood credential: prove you're a real, unique human (
 ### ⚡ x402 / agent payments — the payments layer
 - **[x402-sui-stack](https://x402-sui-stack.netlify.app)** — the x402 builder stack for Sui (**Sui Overflow 2026**): the facilitator + tooling + a one-command demo that settles a real $0.01 USDC payment on **mainnet** and lets anyone recompute it in-browser → [live](https://x402-sui-stack.netlify.app) · [code](https://github.com/DrVelvetFog/x402-sui-stack)
 - **x402 facilitator that settles on Sui** — non-custodial, zero-fee, live on **mainnet** → [sui-x402-facilitator](https://github.com/DrVelvetFog/sui-x402-facilitator) · [live facilitator](https://sui-facilitator.onrender.com)
-- **Co-authoring an x402 standard extension** — *Settlement-Receipt Binding*: bind an on-chain settlement to a signed execution receipt, recomputable from published bytes with an independent verifier — its conformance gate reproduced green by two independent issuers across two rails, plus a live gasless-Sui settlement vector → [x402-foundation/x402#2666](https://github.com/x402-foundation/x402/pull/2666)
-- **Merged into the x402 monorepo** — a cross-SDK parity fix aligning the EVM facilitator's `exact` error codes with the spec (the TS SDK was the lone outlier vs Go/Python) → [#2744](https://github.com/x402-foundation/x402/pull/2744) *(merged)*
+- **Authoring a proposed x402 standard extension** — *Settlement-Receipt Binding*: bind an on-chain settlement to a signed execution receipt, recomputable from published bytes with an independent verifier — its conformance gate reproduced green by two independent issuers across two rails, plus a live gasless-Sui settlement vector → [x402-foundation/x402#2666](https://github.com/x402-foundation/x402/pull/2666)
 - **Taking the standard cross-rail** — a [conformance demo for Solana's `upto` scheme](https://github.com/solana-foundation/x402/pull/3) proving settlement-receipt binding on SVM, plus shaping the `verify()`-soundness invariant on Hedera ([#2701](https://github.com/x402-foundation/x402/issues/2701)) and Solana's allowance-draw design ([#2699](https://github.com/x402-foundation/x402/issues/2699)); one binding, multiple rails (EVM · SVM · Sui)
 - **[x402-pilot](https://github.com/DrVelvetFog/x402-pilot)** — an open-source, non-custodial x402 dev tool + conformance MCP (Apache-2.0)
 
@@ -41,6 +40,17 @@ A risk-managed, multi-user liquidity vault on **DeepBook Predict** — "be the h
 - **[Gulp City](https://gulp-city.netlify.app)** — an installable 3D PWA arcade game
 - **[Jamie Buddy](https://uigstudios.gumroad.com/l/jamie)** — a local-LLM writing assistant
 - **Yomp** — the consumer front door for PoR: *walk to prove you're real* (Sui testnet). The walk is what mints the credential's real-world-action tier.
+
+---
+
+### Upstream contributions
+Code merged into repos I don't maintain:
+- **[openmed](https://github.com/maziyarpanahi/openmed)** (medical NLP · 4.2k★) — an interactive synthetic-data Gradio de-identification demo, and a memory-mapping toggle for the MLX weight-loading path, both with import-safe test coverage → [#1023](https://github.com/maziyarpanahi/openmed/pull/1023) · [#1024](https://github.com/maziyarpanahi/openmed/pull/1024)
+- **[Tessera](https://github.com/neuratile/Tessera)** — a `recovery_hint()` API across the error types of a local-first AI testing IDE (Rust) → [#103](https://github.com/neuratile/Tessera/pull/103)
+- **[x402](https://github.com/x402-foundation/x402)** — a cross-SDK `exact` error-code parity fix (the TS SDK was the lone outlier vs Go / Python) → [#2744](https://github.com/x402-foundation/x402/pull/2744)
+- **[Nodle rollup](https://github.com/NodleCode/rollup)** — docs for manual on-chain vested-grant claims → [#120](https://github.com/NodleCode/rollup/pull/120)
+
+Contributing upstream to **Mysten's Sui stack** — filed a cached-price payment race in `@mysten/walrus` that was taking out mainnet writes ([ts-sdks#1127](https://github.com/MystenLabs/ts-sdks/issues/1127)), reviewed the maintainer's fix ([#1128](https://github.com/MystenLabs/ts-sdks/pull/1128)), and reviewed the [MemWal relayer's recovery](https://github.com/MystenLabs/MemWal/pull/352) for the same class of bug.
 
 ---
 

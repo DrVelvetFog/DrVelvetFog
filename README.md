@@ -11,7 +11,7 @@ I build **identity and payment infrastructure for the agentic web** — end-to-e
 ### 🪪 Proof of Real (PoR) — flagship
 A Sui-native proof-of-personhood credential: prove you're a real, unique human (passkey + zkLogin onboarding, no personal data captured) and raise your assurance through verifiable real-world actions.
 - Live credential, attestor & Move package · SDK on npm → [`por-sdk`](https://www.npmjs.com/package/por-sdk) (Apache-2.0)
-- **Device-attested real-world action** — App Attest proven on a real iPhone: a walk mints an on-chain *Verified Real* credential, end-to-end (one credential per attested device)
+- **Device-attested real-world action** — App Attest proven on a real iPhone: a walk mints an on-chain *Verified Real* credential, end-to-end, with a device nullifier that dedupes one credential per device — *built and proven; enforcement still gated off during rollout*
 - **[por-proof-of-real.netlify.app](https://por-proof-of-real.netlify.app)** · *mainnet contracts, testnet attestor — personhood, not "sybil-proof"*
 
 ### ⚡ x402 / agent payments — the payments layer
@@ -28,13 +28,10 @@ An EV that pays for its own charge, no human in the loop — the whole stack com
 - **mainnet-proven on Sui**, also settling on **Solana devnet**; bridged to real charging networks via **OCPI** (DeCharge / Starpower-ready)
 - **[x402-charging-agent](https://github.com/DrVelvetFog/x402-charging-agent)** · *vehicle + charging network mocked behind their real interfaces*
 
-### 🌊 FairLine — a DeepBook Predict vault
-A risk-managed, multi-user liquidity vault on **DeepBook Predict** — "be the house, verifiably": senior/junior tranches, capacity cap, on-chain reserve floor + emergency pause, redemption-anchored NAV.
-- **[fairline-vault.netlify.app](https://fairline-vault.netlify.app)** · *testnet, unaudited*
-
 ---
 
 ### Also shipped
+- **[FairLine](https://fairline-vault.netlify.app)** — a risk-managed, multi-user liquidity vault on **DeepBook Predict** ("be the house, verifiably"): senior/junior tranches, capacity cap, on-chain reserve floor + emergency pause, redemption-anchored NAV · *testnet, unaudited*
 - **[Gulp City](https://gulp-city.netlify.app)** — an installable 3D PWA arcade game
 - **[Jamie Buddy](https://uigstudios.gumroad.com/l/jamie)** — a local-LLM writing assistant
 - **Yomp** — the consumer front door for PoR: *walk to prove you're real* (Sui testnet). The walk is what mints the credential's real-world-action tier.
@@ -43,7 +40,7 @@ A risk-managed, multi-user liquidity vault on **DeepBook Predict** — "be the h
 
 ### Upstream contributions
 Code merged into repos I don't maintain:
-- **[openmed](https://github.com/maziyarpanahi/openmed)** (medical NLP) — an interactive synthetic-data Gradio de-identification demo, and a memory-mapping toggle for the MLX weight-loading path, both with import-safe test coverage → [#1023](https://github.com/maziyarpanahi/openmed/pull/1023) · [#1024](https://github.com/maziyarpanahi/openmed/pull/1024)
+- **[openmed](https://github.com/maziyarpanahi/openmed)** (medical NLP) — **release signing & supply-chain evidence**: the publish workflow now attaches its SLSA provenance bundle and artifact digests to the tagged release and keylessly signs every wheel and sdist with Sigstore, so a release can be verified offline with no round trip to GitHub's attestation API. Structured so evidence generation can never gate the PyPI upload — but evidence that *is* produced must verify against the exact workflow identity and release commit, or the job fails → [#1604](https://github.com/maziyarpanahi/openmed/pull/1604). Earlier: an interactive synthetic-data Gradio de-identification demo, and a memory-mapping toggle for the MLX weight-loading path, both with import-safe test coverage → [#1023](https://github.com/maziyarpanahi/openmed/pull/1023) · [#1024](https://github.com/maziyarpanahi/openmed/pull/1024)
 - **[Tessera](https://github.com/neuratile/Tessera)** — a `recovery_hint()` API across the error types of a local-first AI testing IDE (Rust) → [#103](https://github.com/neuratile/Tessera/pull/103)
 - **[x402](https://github.com/x402-foundation/x402)** — a cross-SDK `exact` error-code parity fix (the TS SDK was the lone outlier vs Go / Python) → [#2744](https://github.com/x402-foundation/x402/pull/2744)
 - **[Nodle rollup](https://github.com/NodleCode/rollup)** — migrated the L1 bridge's deposit & quote paths off the deprecated ZKsync Mailbox to Bridgehub (Solidity); merged with authorship preserved after the maintainer validated it against a fork of live-mainnet state, and the sequencing issue it raised shipped as a withdrawal-replay guard → [#121](https://github.com/NodleCode/rollup/pull/121) (landed in [#122](https://github.com/NodleCode/rollup/pull/122)) · earlier, docs for manual vested-grant claims → [#120](https://github.com/NodleCode/rollup/pull/120)

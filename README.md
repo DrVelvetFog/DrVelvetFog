@@ -1,50 +1,58 @@
 # Tony Jagodka
 
-I build **identity and payment infrastructure for the agentic web** — and the accountability tooling that lets a human check what an agent actually did — end-to-end and solo. (Solo is the polite word for "nobody else to blame.") Shipped deepest on **Sui**, taking the same settlement-semantics work cross-rail to **Solana / SVM** and **EVM**.
+I build **identity and payment infrastructure for the agentic web** — and the accountability tooling that lets a human check what an agent actually did. End-to-end, solo. Deepest on **Sui**, taking the same settlement-semantics work cross-rail to **Solana / SVM** and **EVM**.
 
-> **The throughline:** x402 proves an agent *paid* · my settlement-receipt binding proves the payment maps to the *action* · **PoR** proves the actor is a *real, human-backed* entity. Together that's a **verified agent** — and I've shipped a working piece of every layer. Not a deck. Code, on chains, with transaction hashes.
+**Open to contract and full-time engineering roles** → 📫 **tjagodka@gmail.com** · 🌐 [portfolio](https://tony-jagodka.netlify.app)
 
-*Right now: my review text is in a **published IETF Internet-Draft** — [draft-morrison-consent-settlement-04](https://datatracker.ietf.org/doc/draft-morrison-consent-settlement/) (12 Aug 2026) adopted my §8.1 composition clause and §10.5 audit-evasion text verbatim, after a thread ([x402#2734](https://github.com/x402-foundation/x402/issues/2734)) in which the author took every correction, including three overclaims I caught — a rarer sport on the internet than it should be, and the next revision — [-05](https://datatracker.ietf.org/doc/draft-morrison-consent-settlement/) (25 Aug 2026) — now lists me among its Contributors (under my legal name, Antoni Jagodka). In the x402 repo, the maintainer of the new [Sui `exact` scheme](https://github.com/x402-foundation/x402/pull/3081) took my `isExecuted` replay-guard fix as written and built its regression test from my example ([e74e16df](https://github.com/x402-foundation/x402/commit/e74e16df2eb4851c4818490d1a731abf74f586ae)). My **x402 Settlement-Receipt Binding** extension ([#2666](https://github.com/x402-foundation/x402/pull/2666)) is now being worked by two outside implementers — a production EVM team posted per-leg records for a real Polygon JPYC settlement against it, and the author of the receipt-envelope I-D it binds to found a defect in my §3.5 that I fixed in §4 — on top of its conformance gate reproduced green by independent issuers across two rails. Meanwhile the same settlement-semantics work is going cross-rail to **Solana / SVM**, running end-to-end in an [x402 charging agent](https://github.com/DrVelvetFog/x402-charging-agent) (an EV that pays for its own charge — mainnet on Sui, settling on Solana devnet).*
+- **13 pull requests merged into repos I don't own, across 6 organisations** — sigstore, Hugging Face, the x402 standard (Linux Foundation), OpenMed, Nodle, Tessera — including OpenMed's 2.1.0 release announcement thanking me by name
+- **Contributor in a published IETF Internet-Draft** — [draft-morrison-consent-settlement-05](https://datatracker.ietf.org/doc/draft-morrison-consent-settlement/) adopted my composition and audit-evasion text verbatim, credited under my legal name, Antoni Jagodka
+- **[Source Review Coverage](https://github.com/marketplace/actions/source-review-coverage) on the GitHub Marketplace** — one line of CI that emits signed, recomputable evidence that the code which shipped is the code a human approved
+- **A [live, non-custodial x402 facilitator](https://sui-facilitator.onrender.com) settling on Sui mainnet** — zero-fee, plus a proposed standard extension ([Settlement-Receipt Binding](https://github.com/x402-foundation/x402/pull/2666)) that two outside implementers are building against
+- **[`por-sdk`](https://www.npmjs.com/package/por-sdk) on npm** — a proof-of-personhood credential SDK for Sui: passkeys + zkLogin, no personal data captured
+
+> **The throughline:** x402 proves an agent *paid* · settlement-receipt binding proves the payment maps to the *action* · **PoR** proves the actor is a *real, human-backed* entity · the accountability stack proves what the agent *did*. A working piece of every layer — code, on chains, with transaction hashes.
 
 ---
 
-### 🪪 Proof of Real (PoR) — flagship
-A Sui-native proof-of-personhood credential: prove you're a real, unique human (passkey + zkLogin onboarding, no personal data captured) and raise your assurance through verifiable real-world actions. Yes, the robots have to go outside.
+### 🧾 Agent accountability — the flagship
+Built around one question: *can a human check what the agent did without trusting the agent's own account of it?* (The agent's account is always very confident. That's the problem.)
+- **[source-review-coverage](https://github.com/DrVelvetFog/source-review-coverage)** — the verifier for a requirement SLSA v1.2 published and left undefined: for every merge, record which tree each approval covered, which tree shipped, and *replay* one onto the other, signed by the workflow identity — so "two people approved this" becomes something a stranger can recompute offline. Validated against 810 production merges with zero false positives; predicate submitted upstream as [in-toto/attestation#581](https://github.com/in-toto/attestation/pull/581); ships as a one-line [Marketplace Action](https://github.com/marketplace/actions/source-review-coverage). *Apache-2.0*
+- **[rv — Reversible Actions](https://github.com/DrVelvetFog/reversible)** — undo for shell-command file effects: git-tree snapshots + an append-only journal + per-path undo, hooked on every command an agent runs. Closes the gap Claude Code's own checkpointing docs admit. *MIT*
+- **[ev — Evidence Tiers](https://github.com/DrVelvetFog/evidence-tier)** — every claim an agent makes labelled by how it knows: **ran / read / told / recalled / inferred**, as an in-toto Statement predicate with an offline verifier that resolves "ran" claims against the rv journal. *MIT*
+- **[xv — Verified Examples](https://github.com/DrVelvetFog/verified-examples)** — in-toto execution attestations for documentation examples, so an agent can *check* an example instead of recalling it: VERIFIED / MODIFIED / STALE / FAILED per example, with a CI gate. *MIT*
+- **[Desktop agent](https://github.com/DrVelvetFog/uig-studios-ai)** — a local-first desktop agent you can check up on (trust, but `rv undo`): Tauri 2 + React + Rust + Ollama, macOS signed + notarized with an in-app updater, **v1.4.1**. Ships rv, ev, xv, OKF portable memory, and safety gates that don't depend on the model. *Apache-2.0*
+
+### 🪪 Proof of Real (PoR)
+A Sui-native proof-of-personhood credential: prove you're a real, unique human — passkey + zkLogin onboarding, no personal data captured — and raise your assurance through verifiable real-world actions. Yes, the robots have to go outside.
 - Live credential, attestor & Move package · SDK on npm → [`por-sdk`](https://www.npmjs.com/package/por-sdk) (Apache-2.0)
-- **Device-attested real-world action** — App Attest proven on a real iPhone: a walk mints an on-chain *Verified Real* credential, end-to-end, with a device nullifier that dedupes one credential per device — *built and proven; enforcement still gated off during rollout*
-- **[personhood-tier](https://github.com/DrVelvetFog/personhood-tier)** — a runnable "third assurance tier" for device-attestation systems, written for Nodle's trust relay: device attestation proves genuine hardware, a personhood credential caps accounts-per-human — SIWE + attestation + a live PoR credential read composed into one challenge-bound session claim
+- **Device-attested real-world action** — App Attest proven on a real iPhone: a walk mints an on-chain *Verified Real* credential with a device nullifier deduping one credential per device — *built and proven; enforcement still gated off during rollout*
+- **[personhood-tier](https://github.com/DrVelvetFog/personhood-tier)** — a runnable "third assurance tier" for device-attestation systems, written for Nodle's trust relay: SIWE + attestation + a live PoR credential read composed into one challenge-bound session claim
 - **[por-proof-of-real.netlify.app](https://por-proof-of-real.netlify.app)** · *mainnet contracts, testnet attestor — personhood, not "sybil-proof"*
 
-### ⚡ x402 / agent payments — the payments layer
-- **[x402-sui-stack](https://x402-sui-stack.netlify.app)** — the x402 builder stack for Sui (**Sui Overflow 2026**): the facilitator + tooling + a one-command demo that settles a real $0.01 USDC payment on **mainnet** and lets anyone recompute it in-browser → [live](https://x402-sui-stack.netlify.app) · [code](https://github.com/DrVelvetFog/x402-sui-stack)
+### ⚡ x402 / agent payments
+- **Authoring a proposed x402 standard extension** — *Settlement-Receipt Binding*: bind an on-chain settlement to a signed execution receipt, recomputable from published bytes — conformance gate reproduced green by two independent issuers across two rails; a production EVM team posted per-leg records for a real Polygon JPYC settlement against it → [x402#2666](https://github.com/x402-foundation/x402/pull/2666)
+- **In the standard's own code** — the maintainer of the new [Sui `exact` scheme](https://github.com/x402-foundation/x402/pull/3081) took my `isExecuted` replay-guard fix as written and built its regression test from my example ([e74e16df](https://github.com/x402-foundation/x402/commit/e74e16df2eb4851c4818490d1a731abf74f586ae)); the IETF consent-settlement draft adopted my §8.1 + §10.5 text after [x402#2734](https://github.com/x402-foundation/x402/issues/2734)
+- **[x402-sui-stack](https://x402-sui-stack.netlify.app)** — the x402 builder stack for Sui (**Sui Overflow 2026**): facilitator + tooling + a one-command demo settling a real $0.01 USDC payment on **mainnet**, recomputable in-browser → [code](https://github.com/DrVelvetFog/x402-sui-stack)
 - **x402 facilitator that settles on Sui** — non-custodial, zero-fee, live on **mainnet** → [sui-x402-facilitator](https://github.com/DrVelvetFog/sui-x402-facilitator) · [live facilitator](https://sui-facilitator.onrender.com)
-- **First x402 payment on Litecoin** — deployed the canonical x402 Permit2 proxies to LitVM (Litecoin's EVM L2, LiteForge testnet) and settled the first payment through them — provable on-chain: the proxy's tx history begins with it → [litvm-x402](https://github.com/DrVelvetFog/litvm-x402) · *testnet; day-one facilitator support planned for their mainnet*
-- **Authoring a proposed x402 standard extension** — *Settlement-Receipt Binding*: bind an on-chain settlement to a signed execution receipt, recomputable from published bytes with an independent verifier — its conformance gate reproduced green by two independent issuers across two rails, plus a live gasless-Sui settlement vector → [x402-foundation/x402#2666](https://github.com/x402-foundation/x402/pull/2666)
-- **Taking the standard cross-rail** — a [conformance demo for Solana's `upto` scheme](https://github.com/solana-foundation/x402/pull/3) proving settlement-receipt binding on SVM, plus shaping the `verify()`-soundness invariant on Hedera ([#2701](https://github.com/x402-foundation/x402/issues/2701)) and Solana's allowance-draw design ([#2699](https://github.com/x402-foundation/x402/issues/2699)); one binding, multiple rails (EVM · SVM · Sui)
+- **First x402 payment on Litecoin** — deployed the canonical x402 Permit2 proxies to LitVM (Litecoin's EVM L2, testnet) and settled the first payment through them — the proxy's tx history begins with it → [litvm-x402](https://github.com/DrVelvetFog/litvm-x402)
+- **Taking the standard cross-rail** — a [conformance demo for Solana's `upto` scheme](https://github.com/solana-foundation/x402/pull/3) proving settlement-receipt binding on SVM; shaping the `verify()`-soundness invariant on Hedera ([#2701](https://github.com/x402-foundation/x402/issues/2701)) and Solana's allowance-draw design ([#2699](https://github.com/x402-foundation/x402/issues/2699))
+- **Agent-native payments on Nodle** — brought the x402 `exact` scheme to **NODL on zkSync Era** via **Permit2** with a non-custodial `/verify` + `/settle` facilitator; settled real payments end-to-end on zkSync Sepolia. Pairs with a **Nodle Agent Kit** (MCP server + skill: content-provenance and PoR-personhood tools) → *testnet-proven; repos private during partnership review*
 - **[x402-pilot](https://github.com/DrVelvetFog/x402-pilot)** — an open-source, non-custodial x402 dev tool + conformance MCP (Apache-2.0)
-- **Agent-native payments on Nodle** — brought the x402 `exact` scheme to **NODL on zkSync Era**. NODL is a plain ERC-20 (no EIP-3009), so payments settle through **Permit2** with a **non-custodial `/verify` + `/settle` facilitator**; deployed the proxy and settled real payments end-to-end on zkSync Sepolia, HTTP loop included. Pairs with a **Nodle Agent Kit** — an MCP server + skill giving an agent *content-provenance* and *PoR-personhood* tools (partner-gated path to commission real-world work from Nodle's device network) → *testnet-proven; repos private during partnership review*
 
 ### 🔌 x402 Charging Agent — the thesis, end-to-end
 An EV that pays for its own charge, no human in the loop — the whole stack composed in one artifact:
-- **x402 `upto`** metered billing + my **Settlement-Receipt Binding** (#2666) over a *real-world action* — authorize a ceiling, meter the kWh, settle the actual, emit a receipt an independent checker verifies
-- **PoR-gated** — only a verified human's agent may charge (the personhood layer, live)
-- **mainnet-proven on Sui**, also settling on **Solana devnet**; bridged to real charging networks via **OCPI** (DeCharge / Starpower-ready)
+- **x402 `upto`** metered billing + **Settlement-Receipt Binding** over a *real-world action* — authorize a ceiling, meter the kWh, settle the actual, emit a receipt an independent checker verifies
+- **PoR-gated** — only a verified human's agent may charge
+- **mainnet-proven on Sui**, also settling on **Solana devnet**; bridged to real charging networks via **OCPI**
 - **[x402-charging-agent](https://github.com/DrVelvetFog/x402-charging-agent)** · *vehicle + charging network mocked behind their real interfaces*
-
-### 🧾 Agent accountability — shipped 17 Aug 2026
-Three small, composable specs with verifiers, plus the desktop agent that ships all of them. Built around one question: *can a human check what the agent did without trusting the agent's own account of it?* (The agent's account is always very confident. That's the problem.)
-- **[rv — Reversible Actions](https://github.com/DrVelvetFog/reversible)** — undo for shell-command file effects: git-tree snapshots + an append-only journal + per-path undo, hooked on every command an agent runs. For the commands it swore were safe. Closes the gap Claude Code's own checkpointing docs admit (bash-driven changes aren't tracked). *MIT*
-- **[ev — Evidence Tiers](https://github.com/DrVelvetFog/evidence-tier)** — every claim an agent makes labelled by how it knows: **ran / read / told / recalled / inferred**, as an in-toto Statement predicate with an offline verifier that resolves "ran" claims against the rv journal. *MIT*
-- **[xv — Verified Examples](https://github.com/DrVelvetFog/verified-examples)** — in-toto execution attestations for documentation examples, so an agent can *check* an example instead of recalling it: VERIFIED / MODIFIED / STALE / FAILED per example, an `llms.txt` stanza, and a CI gate (rv is the first consumer, green). *MIT*
-- **[Desktop agent](https://github.com/DrVelvetFog/uig-studios-ai)** — a local-first desktop agent you can check up on (trust, but `rv undo`): Tauri 2 + React + Rust + Ollama (cloud/custom endpoints optional), macOS signed + notarized with an in-app updater, **v1.4.1**. Ships rv undo, ev evidence tiers, xv verified examples, OKF portable memory, and safety gates that don't depend on the model. *Apache-2.0*
 
 ---
 
 ### Also shipped
-- **[FairLine](https://fairline-vault.netlify.app)** — a risk-managed, multi-user liquidity vault on **DeepBook Predict** ("be the house, verifiably"): senior/junior tranches, capacity cap, on-chain reserve floor + emergency pause, redemption-anchored NAV · *testnet, unaudited*
-- **[Gulp City](https://gulp-city.netlify.app)** — an installable 3D PWA arcade game, because apparently I also needed a hobby
+- **[FairLine](https://fairline-vault.netlify.app)** — a risk-managed, multi-user liquidity vault on **DeepBook Predict**: senior/junior tranches, capacity cap, on-chain reserve floor + emergency pause, redemption-anchored NAV · *testnet, unaudited*
+- **[Gulp City](https://gulp-city.netlify.app)** — an installable 3D PWA arcade game
 - **Jamie Buddy** — a local-LLM writing assistant
-- **Yomp** — the consumer front door for PoR: *walk to prove you're real* (Sui testnet). The walk is what mints the credential's real-world-action tier.
+- **Yomp** — the consumer front door for PoR: *walk to prove you're real* (Sui testnet)
 
 ---
 
@@ -60,9 +68,6 @@ Three small, composable specs with verifiers, plus the desktop agent that ships 
 Contributing upstream to **Mysten's Sui stack** — filed a cached-price payment race in `@mysten/walrus` that was taking out mainnet writes ([ts-sdks#1127](https://github.com/MystenLabs/ts-sdks/issues/1127)), reviewed the maintainer's fix ([#1128](https://github.com/MystenLabs/ts-sdks/pull/1128)), and reviewed the [MemWal relayer's recovery](https://github.com/MystenLabs/MemWal/pull/352) for the same class of bug. Reported that `setSender()` was a silent no-op behind Seal's owned-object access pattern, with a two-SDK-version repro ([seal#507](https://github.com/MystenLabs/seal/issues/507)) — the SDK behaviour it described was fixed in [ts-sdks#1136](https://github.com/MystenLabs/ts-sdks/pull/1136) and shipped in 2.20.3.
 
 ---
-
-### Work with me
-**Open to contract and full-time engineering roles** — identity, x402 / agentic payments, and agent accountability tooling, **across Sui, Solana/SVM and EVM**. Deepest on Sui, actively building cross-rail.
 
 📫 **tjagodka@gmail.com** · 𝕏 [@DrVelvetFog](https://x.com/DrVelvetFog) · 🌐 [portfolio](https://tony-jagodka.netlify.app) · 💼 [Algora](https://algora.io/DrVelvetFog)
 

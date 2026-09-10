@@ -1,6 +1,6 @@
 # Tony Jagodka
 
-I build **identity and payment infrastructure for the agentic web** — and the accountability tooling that lets a human check what an agent actually did — end-to-end and solo, under [UIG Studios LLC](https://uigstudios.netlify.app). (Solo is the polite word for "nobody else to blame.") Shipped deepest on **Sui**, taking the same settlement-semantics work cross-rail to **Solana / SVM** and **EVM**.
+I build **identity and payment infrastructure for the agentic web** — and the accountability tooling that lets a human check what an agent actually did — end-to-end and solo. (Solo is the polite word for "nobody else to blame.") Shipped deepest on **Sui**, taking the same settlement-semantics work cross-rail to **Solana / SVM** and **EVM**.
 
 > **The throughline:** x402 proves an agent *paid* · my settlement-receipt binding proves the payment maps to the *action* · **PoR** proves the actor is a *real, human-backed* entity. Together that's a **verified agent** — and I've shipped a working piece of every layer. Not a deck. Code, on chains, with transaction hashes.
 
@@ -36,14 +36,14 @@ Three small, composable specs with verifiers, plus the desktop agent that ships 
 - **[rv — Reversible Actions](https://github.com/DrVelvetFog/reversible)** — undo for shell-command file effects: git-tree snapshots + an append-only journal + per-path undo, hooked on every command an agent runs. For the commands it swore were safe. Closes the gap Claude Code's own checkpointing docs admit (bash-driven changes aren't tracked). *MIT*
 - **[ev — Evidence Tiers](https://github.com/DrVelvetFog/evidence-tier)** — every claim an agent makes labelled by how it knows: **ran / read / told / recalled / inferred**, as an in-toto Statement predicate with an offline verifier that resolves "ran" claims against the rv journal. *MIT*
 - **[xv — Verified Examples](https://github.com/DrVelvetFog/verified-examples)** — in-toto execution attestations for documentation examples, so an agent can *check* an example instead of recalling it: VERIFIED / MODIFIED / STALE / FAILED per example, an `llms.txt` stanza, and a CI gate (rv is the first consumer, green). *MIT*
-- **[UIG Studios AI](https://github.com/DrVelvetFog/uig-studios-ai)** — a local-first desktop agent you can check up on (trust, but `rv undo`): Tauri 2 + React + Rust + Ollama (cloud/custom endpoints optional), macOS signed + notarized with an in-app updater, **v1.4.1**. Ships rv undo, ev evidence tiers, xv verified examples, OKF portable memory, and safety gates that don't depend on the model. *Apache-2.0*
+- **[Desktop agent](https://github.com/DrVelvetFog/uig-studios-ai)** — a local-first desktop agent you can check up on (trust, but `rv undo`): Tauri 2 + React + Rust + Ollama (cloud/custom endpoints optional), macOS signed + notarized with an in-app updater, **v1.4.1**. Ships rv undo, ev evidence tiers, xv verified examples, OKF portable memory, and safety gates that don't depend on the model. *Apache-2.0*
 
 ---
 
 ### Also shipped
 - **[FairLine](https://fairline-vault.netlify.app)** — a risk-managed, multi-user liquidity vault on **DeepBook Predict** ("be the house, verifiably"): senior/junior tranches, capacity cap, on-chain reserve floor + emergency pause, redemption-anchored NAV · *testnet, unaudited*
 - **[Gulp City](https://gulp-city.netlify.app)** — an installable 3D PWA arcade game, because apparently I also needed a hobby
-- **[Jamie Buddy](https://uigstudios.gumroad.com/l/jamie)** — a local-LLM writing assistant
+- **Jamie Buddy** — a local-LLM writing assistant
 - **Yomp** — the consumer front door for PoR: *walk to prove you're real* (Sui testnet). The walk is what mints the credential's real-world-action tier.
 
 ---
@@ -62,8 +62,8 @@ Contributing upstream to **Mysten's Sui stack** — filed a cached-price payment
 ---
 
 ### Work with me
-**Available for contract, consulting, grants & engineering roles** — identity, x402 / agentic payments, and agent accountability tooling, **across Sui, Solana/SVM and EVM**. Deepest on Sui, actively building cross-rail.
+**Open to contract and full-time engineering roles** — identity, x402 / agentic payments, and agent accountability tooling, **across Sui, Solana/SVM and EVM**. Deepest on Sui, actively building cross-rail.
 
-📫 **tjagodka@gmail.com** · 𝕏 [@DrVelvetFog](https://x.com/DrVelvetFog) · 🌐 [portfolio](https://tony-jagodka.netlify.app) · 💼 [Algora](https://algora.io/DrVelvetFog) · 🏢 [UIG Studios](https://uigstudios.netlify.app)
+📫 **tjagodka@gmail.com** · 𝕏 [@DrVelvetFog](https://x.com/DrVelvetFog) · 🌐 [portfolio](https://tony-jagodka.netlify.app) · 💼 [Algora](https://algora.io/DrVelvetFog)
 
 *Lines I don't cross: no custody · no token-for-money sales · no PII capture · honest labeling (testnet/unaudited stated plainly). The fourth wall, on the other hand, is fair game.*

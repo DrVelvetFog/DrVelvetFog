@@ -16,7 +16,7 @@ I build **identity and payment infrastructure for the agentic web** — and the 
 
 ### 🧾 Agent accountability — the flagship
 Built around one question: *can a human check what the agent did without trusting the agent's own account of it?* (The agent's account is always very confident. That's the problem.)
-- **[source-review-coverage](https://github.com/DrVelvetFog/source-review-coverage)** — the verifier for a requirement SLSA v1.2 published and left undefined: for every merge, record which tree each approval covered, which tree shipped, and *replay* one onto the other, signed by the workflow identity — so "two people approved this" becomes something a stranger can recompute offline. Validated against 810 production merges with zero false positives; predicate submitted upstream as [in-toto/attestation#581](https://github.com/in-toto/attestation/pull/581); ships as a one-line [Marketplace Action](https://github.com/marketplace/actions/source-review-coverage). *Apache-2.0*
+- **[source-review-coverage](https://github.com/DrVelvetFog/source-review-coverage)** — the verifier for a requirement SLSA v1.2 published and left undefined: for every merge, record which tree each approval covered, which tree shipped, and *replay* one onto the other, signed by the workflow identity — so "two people approved this" becomes something a stranger can recompute offline. Validated against 810 production merges with zero false positives; predicate submitted upstream as [in-toto/attestation#581](https://github.com/in-toto/attestation/pull/581); ships as a one-line [Marketplace Action](https://github.com/marketplace/actions/source-review-coverage), maintained on a fortnightly release train — [sponsorable](https://github.com/sponsors/DrVelvetFog). *Apache-2.0*
 - **[rv — Reversible Actions](https://github.com/DrVelvetFog/reversible)** — undo for shell-command file effects: git-tree snapshots + an append-only journal + per-path undo, hooked on every command an agent runs. Closes the gap Claude Code's own checkpointing docs admit. *MIT*
 - **[ev — Evidence Tiers](https://github.com/DrVelvetFog/evidence-tier)** — every claim an agent makes labelled by how it knows: **ran / read / told / recalled / inferred**, as an in-toto Statement predicate with an offline verifier that resolves "ran" claims against the rv journal. *MIT*
 - **[xv — Verified Examples](https://github.com/DrVelvetFog/verified-examples)** — in-toto execution attestations for documentation examples, so an agent can *check* an example instead of recalling it: VERIFIED / MODIFIED / STALE / FAILED per example, with a CI gate. *MIT*
@@ -69,6 +69,6 @@ Contributing upstream to **Mysten's Sui stack** — filed a cached-price payment
 
 ---
 
-📫 **tjagodka@gmail.com** · 𝕏 [@DrVelvetFog](https://x.com/DrVelvetFog) · 🌐 [portfolio](https://tony-jagodka.netlify.app) · 💼 [Algora](https://algora.io/DrVelvetFog)
+📫 **tjagodka@gmail.com** · 𝕏 [@DrVelvetFog](https://x.com/DrVelvetFog) · 🌐 [portfolio](https://tony-jagodka.netlify.app) · 💼 [Algora](https://algora.io/DrVelvetFog) · 💖 [sponsor the OSS](https://github.com/sponsors/DrVelvetFog)
 
 *Lines I don't cross: no custody · no token-for-money sales · no PII capture · honest labeling (testnet/unaudited stated plainly). The fourth wall, on the other hand, is fair game.*

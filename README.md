@@ -2,7 +2,7 @@
 
 I build **identity and payment infrastructure for the agentic web** — and the accountability tooling that lets a human check what an agent actually did. End-to-end, solo. Deepest on **Sui**, taking the same settlement-semantics work cross-rail to **Solana / SVM** and **EVM**.
 
-**Open to contract and full-time engineering roles** → 📫 **tjagodka@gmail.com** · 🌐 [portfolio](https://tony-jagodka.netlify.app)
+**Open to contract and full-time engineering roles** → 📫 **tjagodka@gmail.com** · 🌐 [portfolio](https://tonyjagodka.com)
 
 - **13 pull requests merged into repos I don't own, across 6 organisations** — sigstore, Hugging Face, the x402 standard (Linux Foundation), OpenMed, Nodle, Tessera — including OpenMed's 2.1.0 release announcement thanking me by name
 - **Contributor in a published IETF Internet-Draft** — [draft-morrison-consent-settlement-05](https://datatracker.ietf.org/doc/draft-morrison-consent-settlement/) adopted my composition and audit-evasion text verbatim, credited under my legal name, Antoni Jagodka
@@ -69,6 +69,6 @@ Contributing upstream to **Mysten's Sui stack** — filed a cached-price payment
 
 ---
 
-📫 **tjagodka@gmail.com** · 𝕏 [@DrVelvetFog](https://x.com/DrVelvetFog) · 🌐 [portfolio](https://tony-jagodka.netlify.app) · 💼 [Algora](https://algora.io/DrVelvetFog) · 💖 [sponsor the OSS](https://github.com/sponsors/DrVelvetFog)
+📫 **tjagodka@gmail.com** · 𝕏 [@DrVelvetFog](https://x.com/DrVelvetFog) · 🌐 [portfolio](https://tonyjagodka.com) · 💼 [Algora](https://algora.io/DrVelvetFog) · 💖 [sponsor the OSS](https://github.com/sponsors/DrVelvetFog)
 
 *Lines I don't cross: no custody · no token-for-money sales · no PII capture · honest labeling (testnet/unaudited stated plainly). The fourth wall, on the other hand, is fair game.*

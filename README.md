@@ -19,11 +19,13 @@ infrastructure. Solo, end to end.
 - **Eight upstream projects audited in a day** — CPython, pydicom, attohttpc, feedparser, Ersilia, purldb,
   plus two private security reports. One of those reports is now fixed and public: NLnet Labs' Rust DNS
   library credits me by name in [the maintainer's own patch](https://github.com/NLnetLabs/domain/pull/725).
+  Since then, a fuzz target on syft's SBOM decoder showed that a *valid* SPDX file could crash Anchore's
+  grype scanner → [anchore/syft#5326](https://github.com/anchore/syft/pull/5326) *(open)*.
   → [every finding, and the method](UPSTREAM.md)
 
 ### What I work in
 
-**Python · TypeScript · Rust · Swift · Solidity / Move** — CI and release engineering, in-toto and Sigstore
+**Python · TypeScript · Go · Rust · Swift · Solidity / Move** — CI and release engineering, in-toto and Sigstore
 provenance, protocol spec work, and production services I keep running.
 
 ### Also live

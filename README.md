@@ -1,76 +1,46 @@
 # Tony Jagodka
 
-I build **identity and payment infrastructure for the agentic web** — and the accountability tooling that lets a human check what an agent actually did. End-to-end, solo. Deepest on **Sui**, taking the same settlement-semantics work cross-rail to **Solana / SVM** and **EVM**.
+I build software that can prove what it did — supply-chain evidence, agent accountability, and payment
+infrastructure. Solo, end to end.
 
-**Open to contract and full-time engineering roles** → 📫 **tjagodka@gmail.com** · 🌐 [portfolio](https://tonyjagodka.com)
+**Open to contract and full-time engineering work** → 📫 **tjagodka@gmail.com** · 🌐 [tonyjagodka.com](https://tonyjagodka.com)
 
-- **15 pull requests merged into repos I don't own, across 6 organisations** — sigstore, Hugging Face, the x402 standard (Linux Foundation), OpenMed, Nodle, Tessera — including OpenMed's 2.1.0 release announcement thanking me by name
-- **Independent second implementer on someone else's standard** — took the E2 seat on [in-toto/attestation#570](https://github.com/in-toto/attestation/pull/570) and built [a validator from the spec text alone](https://github.com/DrVelvetFog/aee-e2) (Python stdlib only, agent-written and declared), publishing the raw first run *before any fix*: 236/272 → **272/272**, 61/61 on the result recompute. Found a gap in the text the author accepted and is landing as a MUST; my argument that a tooling declaration must name agent assistance is going into the tiering proposal, ITE#63. All fifteen divergences were mine — and when a reviewer showed one of my claims rested on my own clock, I withdrew it on the thread
-- **Contributor in a published IETF Internet-Draft** — [draft-morrison-consent-settlement-05](https://datatracker.ietf.org/doc/draft-morrison-consent-settlement/) adopted my composition and audit-evasion text verbatim, credited under my legal name, Antoni Jagodka
-- **[Source Review Coverage](https://github.com/marketplace/actions/source-review-coverage) on the GitHub Marketplace** — one line of CI that emits signed, recomputable evidence that the code which shipped is the code a human approved
-- **A [live, non-custodial x402 facilitator](https://sui-facilitator.onrender.com) settling on Sui mainnet** — zero-fee, plus a proposed standard extension ([Settlement-Receipt Binding](https://github.com/x402-foundation/x402/pull/2666)) that two outside implementers are building against
-- **[`por-sdk`](https://www.npmjs.com/package/por-sdk) on npm** — a proof-of-personhood credential SDK for Sui: passkeys + zkLogin, no personal data captured
+### Four things worth checking
 
-> **The throughline:** x402 proves an agent *paid* · settlement-receipt binding proves the payment maps to the *action* · **PoR** proves the actor is a *real, human-backed* entity · the accountability stack proves what the agent *did*. A working piece of every layer — code, on chains, with transaction hashes.
+- **A fix approved into CPython.** `http.client` hung forever reading a 204 or 304 response that carried
+  `Transfer-Encoding: chunked` — no timeout, no error, just a stall. Found it, reported it, fixed it in 20
+  lines → [python/cpython#157952](https://github.com/python/cpython/pull/157952) *(approved, awaiting a core dev)*
+- **15 pull requests merged into repos I don't own, across 6 organisations** — sigstore, Hugging Face, the
+  x402 standard (Linux Foundation), OpenMed, Nodle, Tessera. Someone else's maintainer decided each one was
+  worth carrying, which is the only review that counts. → [the full ledger](UPSTREAM.md)
+- **[Source Review Coverage](https://github.com/marketplace/actions/source-review-coverage) on the GitHub
+  Marketplace.** One line of CI that makes "two people approved this" something a stranger can recompute
+  offline. Validated against 810 production merges with zero false positives. *Apache-2.0*
+- **Eight upstream projects audited in a day** — CPython, pydicom, attohttpc, feedparser, Ersilia, purldb,
+  plus two private security reports. One of those reports is now fixed and public: NLnet Labs' Rust DNS
+  library credits me by name in [the maintainer's own patch](https://github.com/NLnetLabs/domain/pull/725).
+  → [every finding, and the method](UPSTREAM.md)
 
----
+### What I work in
 
-### 🧾 Agent accountability — the flagship
-Built around one question: *can a human check what the agent did without trusting the agent's own account of it?* (The agent's account is always very confident. That's the problem.)
-- **[source-review-coverage](https://github.com/DrVelvetFog/source-review-coverage)** — the outcome half of a requirement SLSA's own tooling checks by configuration — its `source-tool` establishes the review gate is *configured*; this establishes what actually went through it ([raised with them](https://github.com/slsa-framework/source-tool/issues/450)): for every merge, record which tree each approval covered, which tree shipped, and *replay* one onto the other, signed by the workflow identity — so "two people approved this" becomes something a stranger can recompute offline. Validated against 810 production merges with zero false positives; predicate submitted upstream as [in-toto/attestation#581](https://github.com/in-toto/attestation/pull/581); ships as a one-line [Marketplace Action](https://github.com/marketplace/actions/source-review-coverage), maintained on a fortnightly release train — [sponsorable](https://github.com/sponsors/DrVelvetFog). *Apache-2.0*
-- **[aee-e2](https://github.com/DrVelvetFog/aee-e2)** — the independent second implementation of another author's predicate, built for the E2 seat on [in-toto/attestation#570](https://github.com/in-toto/attestation/pull/570). Evidence order over score: spec pinned by digest, corpus verified, **first run committed raw before any fix**, then the resolution log. 272/272 at rest, 329 tests, standard library only. The [refusal-code crosswalk](https://github.com/astrogilda/agent-evidence-vocabulary/pull/2) into his registry anchors both vocabularies to the suite's own condition identifiers, so neither is renamed toward the other. *Apache-2.0*
-- **[rv — Reversible Actions](https://github.com/DrVelvetFog/reversible)** — undo for shell-command file effects: git-tree snapshots + an append-only journal + per-path undo, hooked on every command an agent runs. Closes the gap Claude Code's own checkpointing docs admit. *MIT*
-- **[ev — Evidence Tiers](https://github.com/DrVelvetFog/evidence-tier)** — every claim an agent makes labelled by how it knows: **ran / read / told / recalled / inferred**, as an in-toto Statement predicate with an offline verifier that resolves "ran" claims against the rv journal. *MIT*
-- **[xv — Verified Examples](https://github.com/DrVelvetFog/verified-examples)** — in-toto execution attestations for documentation examples, so an agent can *check* an example instead of recalling it: VERIFIED / MODIFIED / STALE / FAILED per example, with a CI gate. *MIT*
-- **[Desktop agent](https://github.com/DrVelvetFog/uig-studios-ai)** — a local-first desktop agent you can check up on (trust, but `rv undo`): Tauri 2 + React + Rust + Ollama, macOS signed + notarized with an in-app updater, **v1.4.1**. Ships rv, ev, xv, OKF portable memory, and safety gates that don't depend on the model. *Apache-2.0*
+**Python · TypeScript · Rust · Swift · Solidity / Move** — CI and release engineering, in-toto and Sigstore
+provenance, protocol spec work, and production services I keep running.
 
-### 🪪 Proof of Real (PoR)
-A Sui-native proof-of-personhood credential: prove you're a real, unique human — passkey + zkLogin onboarding, no personal data captured — and raise your assurance through verifiable real-world actions. Yes, the robots have to go outside.
-- Live credential, attestor & Move package · SDK on npm → [`por-sdk`](https://www.npmjs.com/package/por-sdk) (Apache-2.0)
-- **Device-attested real-world action** — App Attest proven on a real iPhone: a walk mints an on-chain *Verified Real* credential with a device nullifier deduping one credential per device — *built and proven; enforcement still gated off during rollout*
-- **[personhood-tier](https://github.com/DrVelvetFog/personhood-tier)** — a runnable "third assurance tier" for device-attestation systems, written for Nodle's trust relay: SIWE + attestation + a live PoR credential read composed into one challenge-bound session claim
-- **[por-proof-of-real.netlify.app](https://por-proof-of-real.netlify.app)** · *mainnet contracts, testnet attestor — personhood, not "sybil-proof"*
+### Also live
 
-### ⚡ x402 / agent payments
-- **Authoring a proposed x402 standard extension** — *Settlement-Receipt Binding*: bind an on-chain settlement to a signed execution receipt, recomputable from published bytes — conformance gate reproduced green by two independent issuers across two rails; a production EVM team posted per-leg records for a real Polygon JPYC settlement against it → [x402#2666](https://github.com/x402-foundation/x402/pull/2666)
-- **In the standard's own code** — the maintainer of the new [Sui `exact` scheme](https://github.com/x402-foundation/x402/pull/3081) took my `isExecuted` replay-guard fix as written and built its regression test from my example ([e74e16df](https://github.com/x402-foundation/x402/commit/e74e16df2eb4851c4818490d1a731abf74f586ae)); the IETF consent-settlement draft adopted my §8.1 + §10.5 text after [x402#2734](https://github.com/x402-foundation/x402/issues/2734)
-- **[x402-sui-stack](https://x402-sui-stack.netlify.app)** — the x402 builder stack for Sui (**Sui Overflow 2026**): facilitator + tooling + a one-command demo settling a real $0.01 USDC payment on **mainnet**, recomputable in-browser → [code](https://github.com/DrVelvetFog/x402-sui-stack)
-- **x402 facilitator that settles on Sui** — non-custodial, zero-fee, live on **mainnet** → [sui-x402-facilitator](https://github.com/DrVelvetFog/sui-x402-facilitator) · [live facilitator](https://sui-facilitator.onrender.com)
-- **First x402 payment on Litecoin** — deployed the canonical x402 Permit2 proxies to LitVM (Litecoin's EVM L2, testnet) and settled the first payment through them — the proxy's tx history begins with it → [litvm-x402](https://github.com/DrVelvetFog/litvm-x402)
-- **Taking the standard cross-rail** — a [conformance demo for Solana's `upto` scheme](https://github.com/solana-foundation/x402/pull/3) proving settlement-receipt binding on SVM; shaping the `verify()`-soundness invariant on Hedera ([#2701](https://github.com/x402-foundation/x402/issues/2701)) and Solana's allowance-draw design ([#2699](https://github.com/x402-foundation/x402/issues/2699))
-- **Agent-native payments on Nodle** — brought the x402 `exact` scheme to **NODL on zkSync Era** via **Permit2** with a non-custodial `/verify` + `/settle` facilitator; settled real payments end-to-end on zkSync Sepolia. Pairs with a **Nodle Agent Kit** (MCP server + skill: content-provenance and PoR-personhood tools) → *testnet-proven; repos private during partnership review*
-- **[x402-pilot](https://github.com/DrVelvetFog/x402-pilot)** — an open-source, non-custodial x402 dev tool + conformance MCP (Apache-2.0)
+[An x402 facilitator settling on Sui mainnet](https://github.com/DrVelvetFog/sui-x402-facilitator) (independent,
+non-custodial) · [`por-sdk` on npm](https://www.npmjs.com/package/por-sdk) · [a signed and notarized macOS
+desktop agent](https://github.com/DrVelvetFog/uig-studios-ai) · three agent-accountability tools —
+[rv](https://github.com/DrVelvetFog/reversible) · [ev](https://github.com/DrVelvetFog/evidence-tier) ·
+[xv](https://github.com/DrVelvetFog/verified-examples) · and text adopted verbatim into a published
+[IETF Internet-Draft](https://datatracker.ietf.org/doc/draft-morrison-consent-settlement/), credited under
+my legal name, Antoni Jagodka.
 
-### 🔌 x402 Charging Agent — the thesis, end-to-end
-An EV that pays for its own charge, no human in the loop — the whole stack composed in one artifact:
-- **x402 `upto`** metered billing + **Settlement-Receipt Binding** over a *real-world action* — authorize a ceiling, meter the kWh, settle the actual, emit a receipt an independent checker verifies
-- **PoR-gated** — only a verified human's agent may charge
-- **mainnet-proven on Sui**, also settling on **Solana devnet**; bridged to real charging networks via **OCPI**
-- **[x402-charging-agent](https://github.com/DrVelvetFog/x402-charging-agent)** · *vehicle + charging network mocked behind their real interfaces*
+**→ [The long version, with the full engineering record](PORTFOLIO.md)**
 
 ---
 
-### Also shipped
-- **[FairLine](https://fairline-vault.netlify.app)** — a risk-managed, multi-user liquidity vault on **DeepBook Predict**: senior/junior tranches, capacity cap, on-chain reserve floor + emergency pause, redemption-anchored NAV · *testnet, unaudited*
-- **[Gulp City](https://gulp-city.netlify.app)** — an installable 3D PWA arcade game
-- **Jamie Buddy** — a local-LLM writing assistant
-- **Yomp** — the consumer front door for PoR: *walk to prove you're real* (Sui testnet)
+📫 **tjagodka@gmail.com** · 𝕏 [@DrVelvetFog](https://x.com/DrVelvetFog) · 🌐 [portfolio](https://tonyjagodka.com) · 💖 [sponsor the OSS](https://github.com/sponsors/DrVelvetFog)
 
----
-
-### Upstream contributions
-**15 pull requests merged into repos I don't own, across 6 organisations** — someone else's maintainer decided each one was worth carrying, which is the only review that counts:
-- **[openmed](https://github.com/maziyarpanahi/openmed)** (medical NLP, 9 merged) — **release provenance, end to end** — shipped as the headline *review-first workflows* feature of **OpenMed 2.1.0** (12 Aug 2026), whose release announcement thanks me by name. A **release run-ledger** binding every build artifact to the gate decision that cleared it: each row hashes the artifact digest together with the verified `GateReport`, and *recomputes* that report's hash rather than trusting the stored one, so evidence edited under a stale hash fails the ledger instead of publishing → [#1899](https://github.com/maziyarpanahi/openmed/pull/1899). Then the **rollback decision** that consumes it — a pure function mapping a gate diff to a rollback target, side-effect-free and reproducible from committed state with no live API call, reusing the release gate's own tolerance and label scope so the gate and the rollback can never disagree about the same candidate → [#2109](https://github.com/maziyarpanahi/openmed/pull/2109), which the maintainer rebased onto master himself and landed with my commit preserved in [#2219](https://github.com/maziyarpanahi/openmed/pull/2219). Before those, **release signing**: the publish workflow attaches its SLSA provenance bundle and artifact digests to the tagged release and keylessly signs every wheel and sdist with Sigstore, so a release verifies offline with no round trip to GitHub's attestation API — structured so evidence generation can never gate the PyPI upload, but evidence that *is* produced must verify against the exact workflow identity and release commit or the job fails → [#1604](https://github.com/maziyarpanahi/openmed/pull/1604). Plus an interactive synthetic-data Gradio de-identification demo and a memory-mapping toggle for the MLX weight-loading path, both with import-safe test coverage → [#1023](https://github.com/maziyarpanahi/openmed/pull/1023) · [#1024](https://github.com/maziyarpanahi/openmed/pull/1024). Most recently, a **read-only catalog-coherence CI gate** that cross-checks every manifest label against the canonical set — the strict way, refusing the `normalize()`-into-`OTHER` shortcut that quietly passes *any* string, since `OTHER` is itself canonical → [#2268](https://github.com/maziyarpanahi/openmed/pull/2268). And the **model-registry rekey** — a P0 where I stopped before committing a state schema to flag that the issue's key model didn't match the shipped manifest (the `-vN` suffix it wanted to parse as a checkpoint sequence is just part of the upstream model name); the maintainer agreed, and the corrected model is what landed: sparse `family::tier::format` release-channel slots, SemVer as assigned committed state rather than something recomputed from a repo name, and a one-time fail-closed v1 migration that refuses to guess → [#2556](https://github.com/maziyarpanahi/openmed/pull/2556). Latest, the **multimodal preflight pair**: pre-decode resource-limit profiles where a rule the metadata can't answer (PDF's manifest contract carries no pixel geometry) emits an explicit insufficient-metadata finding instead of inferring pixels from page count → [#3072](https://github.com/maziyarpanahi/openmed/pull/3072), and the accept-or-abstain **preflight report** that runs every check before any decoder opens — fixed check order, bounded reads, digests and numeric metadata only, and missing evidence never becomes acceptance, so the PDF happy path abstains rather than passing on what it couldn't see → [#3073](https://github.com/maziyarpanahi/openmed/pull/3073)
-- **[Tessera](https://github.com/neuratile/Tessera)** — a `recovery_hint()` API across the error types of a local-first AI testing IDE (Rust) → [#103](https://github.com/neuratile/Tessera/pull/103)
-- **[x402](https://github.com/x402-foundation/x402)** — a cross-SDK `exact` error-code parity fix (the TS SDK was the lone outlier vs Go / Python) → [#2744](https://github.com/x402-foundation/x402/pull/2744) · *the project moved under the **Linux Foundation** in July 2026, so this now sits in the standard's own repo*
-- **[huggingface.js](https://github.com/huggingface/huggingface.js)** — two correctness fixes where the existing tests *looked* like they covered the contract. The public `language()` lookup used `code in TABLE`, and `in` walks the prototype chain, so `language("toString")` returned `Object.prototype.toString` — a function — out of a signature typed `Language | null`; the invalid-code test passed only because its input wasn't on `Object.prototype` → [#2320](https://github.com/huggingface/huggingface.js/pull/2320). And in `@huggingface/hub`, a completed SHA-256 hash left its abort listener attached, so a later abort of that signal terminated a worker already returned to the pool and rejected an already-returned generator. Fixed in one place — `cleanup()` now drops the listener on every exit path — with a deterministic worker stand-in to reproduce it → [#2325](https://github.com/huggingface/huggingface.js/pull/2325)
-- **[sigstore-python](https://github.com/sigstore/sigstore-python)** — `Statement(contents=...)` swallowed the pydantic `ValidationError`, so a rejected digest algorithm, a missing field and a bad `_type` all came back as the same bare `malformed in-toto statement` with no `__cause__` — three different failures wearing one error message — while the builder path in the same module already preserved it. Made the parser match, with a test that fails without the fix → [#1846](https://github.com/sigstore/sigstore-python/pull/1846)
-- **[Nodle rollup](https://github.com/NodleCode/rollup)** — migrated the L1 bridge's deposit & quote paths off the deprecated ZKsync Mailbox to Bridgehub (Solidity). My commits landed with authorship preserved in [#122](https://github.com/NodleCode/rollup/pull/122) after the maintainer validated the work against a fork of live-mainnet state and hardened it; the sequencing issue it raised shipped alongside as a withdrawal-replay guard. Originally submitted as [#121](https://github.com/NodleCode/rollup/pull/121), closed in favour of the hardened branch · earlier, docs for manual vested-grant claims → [#120](https://github.com/NodleCode/rollup/pull/120)
-
-Contributing upstream to **Mysten's Sui stack** — filed a cached-price payment race in `@mysten/walrus` that was taking out mainnet writes ([ts-sdks#1127](https://github.com/MystenLabs/ts-sdks/issues/1127)), reviewed the maintainer's fix ([#1128](https://github.com/MystenLabs/ts-sdks/pull/1128)), and reviewed the [MemWal relayer's recovery](https://github.com/MystenLabs/MemWal/pull/352) for the same class of bug. Reported that `setSender()` was a silent no-op behind Seal's owned-object access pattern, with a two-SDK-version repro ([seal#507](https://github.com/MystenLabs/seal/issues/507)) — the SDK behaviour it described was fixed in [ts-sdks#1136](https://github.com/MystenLabs/ts-sdks/pull/1136) and shipped in 2.20.3.
-
----
-
-📫 **tjagodka@gmail.com** · 𝕏 [@DrVelvetFog](https://x.com/DrVelvetFog) · 🌐 [portfolio](https://tonyjagodka.com) · 💼 [Algora](https://algora.io/DrVelvetFog) · 💖 [sponsor the OSS](https://github.com/sponsors/DrVelvetFog)
-
-*Lines I don't cross: no custody · no token-for-money sales · no PII capture · honest labeling (testnet/unaudited stated plainly). The fourth wall, on the other hand, is fair game.*
+*Lines I don't cross: no custody · no token-for-money sales · no PII capture · honest labeling
+(testnet/unaudited stated plainly). The fourth wall, on the other hand, is fair game.*

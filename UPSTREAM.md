@@ -10,13 +10,14 @@ IDE — across **Python, Rust, Go, TypeScript and Solidity**.
 
 ---
 
-## Merged — 15 pull requests, 6 organisations
+## Merged — 17 pull requests, 7 organisations
 
 | Project | Domain | Lang | What |
 |---|---|---|---|
-| [openmed](https://github.com/maziyarpanahi/openmed) ×9 | medical NLP | Python | Release provenance end to end: a run-ledger binding every artifact to the gate decision that cleared it, the rollback decision that consumes it, Sigstore release signing, a catalog-coherence CI gate, a model-registry rekey, and a multimodal preflight pair. Shipped as the headline feature of **OpenMed 2.1.0**, whose release notes thank me by name. |
+| [openmed](https://github.com/maziyarpanahi/openmed) ×10 | medical NLP | Python | Release provenance end to end: a run-ledger binding every artifact to the gate decision that cleared it, the rollback decision that consumes it, Sigstore release signing, a catalog-coherence CI gate, a model-registry rekey, a multimodal preflight pair, and a decoded-memory planner for multimodal batches. Shipped as the headline feature of **OpenMed 2.1.0**, whose release notes thank me by name. |
 | [huggingface.js](https://github.com/huggingface/huggingface.js) ×2 | ML tooling | TypeScript | `language()` used `code in TABLE`, and `in` walks the prototype chain — so `language("toString")` returned a *function* out of a signature typed `Language \| null`. Separately, a completed SHA-256 hash left its abort listener attached, so a later abort killed a worker already returned to the pool. |
 | [sigstore-python](https://github.com/sigstore/sigstore-python) | supply-chain signing | Python | `Statement(contents=…)` swallowed the pydantic `ValidationError`, so three different failures all surfaced as one bare `malformed in-toto statement` with no `__cause__`. |
+| [agent-evidence-vocabulary](https://github.com/probityai/agent-evidence-vocabulary) | agent evidence | YAML / JSON | A crosswalk filing the aee-e2 verifier against a closed vocabulary for agent-evidence claims, plus the refusal-code mapping requested on [in-toto/attestation#570](https://github.com/in-toto/attestation/issues/570): 63 codes on each side, zero verbatim overlap, and 28 pairs that refuse exactly the same statements across the 209 reject vectors. |
 | [x402](https://github.com/x402-foundation/x402) | payments standard | TypeScript | Cross-SDK `exact` error-code parity — the TS SDK was the lone outlier against Go and Python. Now sits in a Linux Foundation project. |
 | [Nodle rollup](https://github.com/NodleCode/rollup) | L1 bridge | Solidity | Migrated the bridge's deposit and quote paths off the deprecated ZKsync Mailbox to Bridgehub. Commits landed with authorship preserved after the maintainer validated them against forked mainnet state. |
 | [Tessera](https://github.com/neuratile/Tessera) | local-AI IDE | Rust | A `recovery_hint()` API across the error types. |

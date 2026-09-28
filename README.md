@@ -10,9 +10,9 @@ infrastructure. Solo, end to end.
 - **A fix approved into CPython.** `http.client` hung forever reading a 204 or 304 response that carried
   `Transfer-Encoding: chunked` — no timeout, no error, just a stall. Found it, reported it, fixed it in 20
   lines → [python/cpython#157952](https://github.com/python/cpython/pull/157952) *(approved, awaiting a core dev)*
-- **15 pull requests merged into repos I don't own, across 6 organisations** — sigstore, Hugging Face, the
-  x402 standard (Linux Foundation), OpenMed, Nodle, Tessera. Someone else's maintainer decided each one was
-  worth carrying, which is the only review that counts. → [the full ledger](UPSTREAM.md)
+- **17 pull requests merged into repos I don't own, across 7 organisations** — sigstore, Hugging Face, the
+  x402 standard (Linux Foundation), OpenMed, Nodle, Tessera, probityai. Someone else's maintainer decided
+  each one was worth carrying, which is the only review that counts. → [the full ledger](UPSTREAM.md)
 - **[Source Review Coverage](https://github.com/marketplace/actions/source-review-coverage) on the GitHub
   Marketplace.** One line of CI that makes "two people approved this" something a stranger can recompute
   offline. Validated against 810 production merges with zero false positives. *Apache-2.0*

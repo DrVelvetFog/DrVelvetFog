@@ -17,8 +17,9 @@ infrastructure. Solo, end to end.
   Marketplace.** One line of CI that makes "two people approved this" something a stranger can recompute
   offline. Validated against 810 production merges with zero false positives. *Apache-2.0*
 - **Eight upstream projects audited in a day** — CPython, pydicom, attohttpc, feedparser, Ersilia, purldb,
-  plus two private security reports. One of those reports is now fixed and public: NLnet Labs' Rust DNS
-  library credits me by name in [the maintainer's own patch](https://github.com/NLnetLabs/domain/pull/725).
+  plus two private security reports. One is now fixed and public: NLnet Labs fixed all four bugs I found in
+  their Rust DNS library, a soundness bug among them, and
+  [RUSTSEC-2026-0310](https://rustsec.org/advisories/RUSTSEC-2026-0310.html) credits me by name.
   Since then, a fuzz target on syft's SBOM decoder showed that a *valid* SPDX file could crash Anchore's
   grype scanner → [anchore/syft#5326](https://github.com/anchore/syft/pull/5326) *(open)*.
   → [every finding, and the method](UPSTREAM.md)

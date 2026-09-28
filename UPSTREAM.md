@@ -24,9 +24,16 @@ IDE — across **Python, Rust, Go, TypeScript and Solidity**.
 
 ## Credited in the maintainer's own fix
 
+Four bugs from one fuzzing run of NLnet Labs' Rust DNS library, reported privately and fixed in
+**domain 0.12.3** (25 Sep 2026). The release notes and the RustSec advisory,
+[RUSTSEC-2026-0310](https://rustsec.org/advisories/RUSTSEC-2026-0310.html), credit me by name alongside
+the other reporters, including an independent report from Qifan Zhang of Palo Alto Networks.
+
 | Project | Lang | What |
 |---|---|---|
-| [NLnetLabs/domain#725](https://github.com/NLnetLabs/domain/pull/725) | Rust | An integer overflow in the zone-file `Scan` implementation for unsigned integers: `checked_mul` guarded the multiply but `+=` was unchecked, so a release build silently wrapped — `MX 65536` parsed as preference `0`. Found by fuzzing the published crate and reported privately; the maintainer's fix credits me by name, alongside an independent report from Qifan Zhang of Palo Alto Networks. **Merged 2026-09-24.** |
+| [NLnetLabs/domain#730](https://github.com/NLnetLabs/domain/pull/730) | Rust | **Soundness.** The zone-file scanner's UTF-8 decoder accepted overlong encodings, then built a `&str` with `from_utf8_unchecked`, so a safe API could hand back a string that isn't valid UTF-8. That's undefined behaviour, and a bypass for any code that validates by characters. The same root cause let an overlong `;` trip an internal assertion. |
+| [NLnetLabs/domain#736](https://github.com/NLnetLabs/domain/pull/736) | Rust | Any TXT record with no data, like `a. 300 IN TXT`, panicked with an index out of bounds. |
+| [NLnetLabs/domain#725](https://github.com/NLnetLabs/domain/pull/725) | Rust | An integer overflow in the zone-file `Scan` implementation for unsigned integers: `checked_mul` guarded the multiply but `+=` was unchecked, so a release build silently wrapped. `MX 65536` parsed as preference `0`. |
 
 ## Open — under review
 
@@ -56,8 +63,6 @@ Details withheld until the maintainers ship. Listed so the record is complete, n
 
 - **actix-web / actix-http** — a response-desync issue in the client decoder. Private advisory filed via
   GitHub's vulnerability reporting, currently in triage. Reproduction and patch supplied.
-- **NLnetLabs/domain** — further findings from the same fuzzing run as #725 above, still in progress with
-  the maintainers.
 
 ---
 

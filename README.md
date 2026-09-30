@@ -10,7 +10,7 @@ infrastructure. Solo, end to end.
 - **A fix approved into CPython.** `http.client` hung forever reading a 204 or 304 response that carried
   `Transfer-Encoding: chunked` — no timeout, no error, just a stall. Found it, reported it, fixed it in 20
   lines → [python/cpython#157952](https://github.com/python/cpython/pull/157952) *(approved, awaiting a core dev)*
-- **19 pull requests merged into repos I don't own, across 8 organisations** — sigstore, Hugging Face,
+- **20 pull requests merged into repos I don't own, across 8 organisations** — sigstore, Hugging Face,
   Anchore, the x402 standard (Linux Foundation), OpenMed, Nodle, Tessera, probityai. Someone else's maintainer decided
   each one was worth carrying, which is the only review that counts. → [the full ledger](UPSTREAM.md)
 - **[Source Review Coverage](https://github.com/marketplace/actions/source-review-coverage) on the GitHub
@@ -21,7 +21,8 @@ infrastructure. Solo, end to end.
   their Rust DNS library, a soundness bug among them, and
   [RUSTSEC-2026-0310](https://rustsec.org/advisories/RUSTSEC-2026-0310.html) credits me by name.
   Since then, a fuzz target on syft's SBOM decoder showed that a *valid* SPDX file could crash Anchore's
-  grype scanner → [anchore/syft#5326](https://github.com/anchore/syft/pull/5326) *(merged)*.
+  grype scanner → [anchore/syft#5326](https://github.com/anchore/syft/pull/5326) *(merged)*, and a round-trip
+  target caught syft writing SBOMs it couldn't read back → [#5349](https://github.com/anchore/syft/pull/5349) *(merged)*.
   → [every finding, and the method](UPSTREAM.md)
 
 ### What I work in

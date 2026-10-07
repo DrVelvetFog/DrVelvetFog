@@ -10,7 +10,7 @@ IDE — across **Python, Rust, Go, TypeScript and Solidity**.
 
 ---
 
-## Merged — 20 pull requests, 8 organisations
+## Merged — 21 pull requests, 9 organisations
 
 | Project | Domain | Lang | What |
 |---|---|---|---|
@@ -22,6 +22,7 @@ IDE — across **Python, Rust, Go, TypeScript and Solidity**.
 | [x402](https://github.com/x402-foundation/x402) | payments standard | TypeScript | Cross-SDK `exact` error-code parity — the TS SDK was the lone outlier against Go and Python. Now sits in a Linux Foundation project. |
 | [Nodle rollup](https://github.com/NodleCode/rollup) | L1 bridge | Solidity | Migrated the bridge's deposit and quote paths off the deprecated ZKsync Mailbox to Bridgehub. Commits landed with authorship preserved after the maintainer validated them against forked mainnet state. |
 | [Tessera](https://github.com/neuratile/Tessera) | local-AI IDE | Rust | A `recovery_hint()` API across the error types. |
+| [zebra](https://github.com/ZcashFoundation/zebra) | Zcash consensus node | Rust | Bounded a peer-supplied upfront allocation in `zcash_deserialize_bytes_external_count`: the length arrives off the wire before any byte is read, so the buffer now grows with delivered bytes (`take` + `read_to_end` under `MAX_INITIAL_ALLOCATION`) instead of trusting the claim, failing closed on a short reader. |
 
 ## Credited in the maintainer's own fix
 

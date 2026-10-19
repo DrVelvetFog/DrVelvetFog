@@ -1,7 +1,7 @@
 # Upstream — the full ledger
 
 Every contribution I've made to code I don't own: merged, open, declined, and under embargo. Statuses are
-current as of **2026-09-24** and each one links to the thread, so anything here can be checked rather than
+current as of **2026-10-19** and each one links to the thread, so anything here can be checked rather than
 taken on my word.
 
 Eleven problem domains — HTTP framing, DNS zone files, DICOM medical imaging, medical NLP, RSS parsing,
@@ -10,7 +10,7 @@ IDE — across **Python, Rust, Go, TypeScript and Solidity**.
 
 ---
 
-## Merged — 21 pull requests, 9 organisations
+## Merged — 22 pull requests, 9 organisations
 
 | Project | Domain | Lang | What |
 |---|---|---|---|
@@ -22,7 +22,7 @@ IDE — across **Python, Rust, Go, TypeScript and Solidity**.
 | [x402](https://github.com/x402-foundation/x402) | payments standard | TypeScript | Cross-SDK `exact` error-code parity — the TS SDK was the lone outlier against Go and Python. Now sits in a Linux Foundation project. |
 | [Nodle rollup](https://github.com/NodleCode/rollup) | L1 bridge | Solidity | Migrated the bridge's deposit and quote paths off the deprecated ZKsync Mailbox to Bridgehub. Commits landed with authorship preserved after the maintainer validated them against forked mainnet state. |
 | [Tessera](https://github.com/neuratile/Tessera) | local-AI IDE | Rust | A `recovery_hint()` API across the error types. |
-| [zebra](https://github.com/ZcashFoundation/zebra) | Zcash consensus node | Rust | Bounded a peer-supplied upfront allocation in `zcash_deserialize_bytes_external_count`: the length arrives off the wire before any byte is read, so the buffer now grows with delivered bytes (`take` + `read_to_end` under `MAX_INITIAL_ALLOCATION`) instead of trusting the claim, failing closed on a short reader. |
+| [zebra](https://github.com/ZcashFoundation/zebra) ×2 | Zcash consensus node | Rust | Two peer-facing resource bounds in the node's network path. A transaction `getdata` request looked every requested ID up in the mempool before any limit applied, so one peer could force oversized work; the fix caps the ID set to the protocol's 25,000-item `inv` constant before the lookup → [#11722](https://github.com/ZcashFoundation/zebra/pull/11722), closing [#10566](https://github.com/ZcashFoundation/zebra/issues/10566). Earlier, `zcash_deserialize_bytes_external_count` trusted a peer-supplied length arriving off the wire before any byte is read; the buffer now grows with delivered bytes (`take` + `read_to_end` under `MAX_INITIAL_ALLOCATION`) instead of trusting the claim, failing closed on a short reader → [#11420](https://github.com/ZcashFoundation/zebra/pull/11420). |
 
 ## Credited in the maintainer's own fix
 

@@ -1,7 +1,7 @@
 # Upstream — the full ledger
 
 Every contribution I've made to code I don't own: merged, open, declined, and under embargo. Statuses are
-current as of **2026-10-22** and each one links to the thread, so anything here can be checked rather than
+current as of **2026-10-24** and each one links to the thread, so anything here can be checked rather than
 taken on my word.
 
 Eleven problem domains — HTTP framing, DNS zone files, DICOM medical imaging, medical NLP, RSS parsing,
@@ -10,7 +10,7 @@ IDE — across **Python, Rust, Go, TypeScript and Solidity**.
 
 ---
 
-## Merged — 23 pull requests, 9 organisations
+## Merged — 24 pull requests, 9 organisations
 
 | Project | Domain | Lang | What |
 |---|---|---|---|
@@ -19,7 +19,7 @@ IDE — across **Python, Rust, Go, TypeScript and Solidity**.
 | [sigstore-python](https://github.com/sigstore/sigstore-python) | supply-chain signing | Python | `Statement(contents=…)` swallowed the pydantic `ValidationError`, so three different failures all surfaced as one bare `malformed in-toto statement` with no `__cause__`. |
 | [syft](https://github.com/anchore/syft) ×2 | SBOM formats | Go | A *valid* SPDX 2.3 document crashed both syft and grype, Anchore's vulnerability scanner. When the package the document describes is a file with no supplier (an optional field), `fileSource` dereferenced the nil supplier that `containerSource`, right above it, already checked. The same fix drops JSON `null` list entries that panicked elsewhere in the same decoder. The first crash came from a native Go fuzz target on `format.Decode`, about five minutes in, answering a 2022 maintainer request for fuzzing ([grype#981](https://github.com/anchore/grype/issues/981)). A round-trip target then caught syft writing SPDX it couldn't read back: with no source name, the root package got an empty `PackageName`, which SPDX requires, and tag-value output dropped the line entirely. |
 | [agent-evidence-vocabulary](https://github.com/probityai/agent-evidence-vocabulary) ×2 | agent evidence | YAML / JSON | A crosswalk filing the aee-e2 verifier against a closed vocabulary for agent-evidence claims, plus the refusal-code mapping requested on [in-toto/attestation#570](https://github.com/in-toto/attestation/issues/570): 63 codes on each side, zero verbatim overlap, and 28 pairs that refuse exactly the same statements across the 209 reject vectors. A follow-up moved aee-e2's result row from *inferred* to *recomputed*, after recounting all 61 accepted rows from the raw first run rather than copying the total. |
-| [x402](https://github.com/x402-foundation/x402) ×2 | payments standard | TypeScript | Cross-SDK `exact` error-code parity — the TS SDK was the lone outlier against Go and Python. Now sits in a Linux Foundation project. Later, added Sui to the standard's CAIP-2 identifier and token-support registries → [#3804](https://github.com/x402-foundation/x402/pull/3804) — with the default-asset rows deliberately left out, because `@x402/sui` ships no `defaultAssets.ts` yet and rows there would document dollar-string pricing that doesn't work. |
+| [x402](https://github.com/x402-foundation/x402) ×3 | payments standard | TypeScript | Cross-SDK `exact` error-code parity — the TS SDK was the lone outlier against Go and Python. Now sits in a Linux Foundation project. Later, added Sui to the standard's CAIP-2 identifier and token-support registries → [#3804](https://github.com/x402-foundation/x402/pull/3804) — with the default-asset rows deliberately left out, because `@x402/sui` ships no `defaultAssets.ts` yet and rows there would document dollar-string pricing that doesn't work. And my facilitator is now in the standard's official facilitators directory → [#2619](https://github.com/x402-foundation/x402/pull/2619), opened in June and carried through a force-push closure, a rebase past 220 upstream commits, and a signed-commit requirement before it merged. |
 | [Nodle rollup](https://github.com/NodleCode/rollup) | L1 bridge | Solidity | Migrated the bridge's deposit and quote paths off the deprecated ZKsync Mailbox to Bridgehub. Commits landed with authorship preserved after the maintainer validated them against forked mainnet state. |
 | [Tessera](https://github.com/neuratile/Tessera) | local-AI IDE | Rust | A `recovery_hint()` API across the error types. |
 | [zebra](https://github.com/ZcashFoundation/zebra) ×2 | Zcash consensus node | Rust | Two peer-facing resource bounds in the node's network path. A transaction `getdata` request looked every requested ID up in the mempool before any limit applied, so one peer could force oversized work; the fix caps the ID set to the protocol's 25,000-item `inv` constant before the lookup → [#11722](https://github.com/ZcashFoundation/zebra/pull/11722), closing [#10566](https://github.com/ZcashFoundation/zebra/issues/10566). Earlier, `zcash_deserialize_bytes_external_count` trusted a peer-supplied length arriving off the wire before any byte is read; the buffer now grows with delivered bytes (`take` + `read_to_end` under `MAX_INITIAL_ALLOCATION`) instead of trusting the claim, failing closed on a short reader → [#11420](https://github.com/ZcashFoundation/zebra/pull/11420). |

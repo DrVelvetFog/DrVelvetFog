@@ -10,7 +10,7 @@ infrastructure. Solo, end to end.
 - **A fix approved into CPython.** `http.client` hung forever reading a 204 or 304 response that carried
   `Transfer-Encoding: chunked` — no timeout, no error, just a stall. Found it, reported it, fixed it in 20
   lines → [python/cpython#157952](https://github.com/python/cpython/pull/157952) *(approved, awaiting a core dev)*
-- **23 pull requests merged into repos I don't own, across 9 organisations** — sigstore, Hugging Face,
+- **24 pull requests merged into repos I don't own, across 9 organisations** — sigstore, Hugging Face,
   Anchore, the Zcash Foundation, the x402 standard (Linux Foundation), OpenMed, Nodle, Tessera, probityai. Someone else's maintainer decided
   each one was worth carrying, which is the only review that counts. → [the full ledger](UPSTREAM.md)
 - **[Source Review Coverage](https://github.com/marketplace/actions/source-review-coverage) on the GitHub
@@ -33,7 +33,7 @@ provenance, protocol spec work, and production services I keep running.
 ### Also live
 
 [An x402 facilitator settling on Sui mainnet](https://github.com/DrVelvetFog/sui-x402-facilitator) (independent,
-non-custodial) · [`por-sdk` on npm](https://www.npmjs.com/package/por-sdk) · [a signed and notarized macOS
+non-custodial, listed in the [x402 standard's facilitators directory](https://github.com/x402-foundation/x402/pull/2619)) · [`por-sdk` on npm](https://www.npmjs.com/package/por-sdk) · [a signed and notarized macOS
 desktop agent](https://github.com/DrVelvetFog/uig-studios-ai) · three agent-accountability tools —
 [rv](https://github.com/DrVelvetFog/reversible) · [ev](https://github.com/DrVelvetFog/evidence-tier) ·
 [xv](https://github.com/DrVelvetFog/verified-examples) · and text adopted verbatim into a published

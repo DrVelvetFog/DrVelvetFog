@@ -28,7 +28,8 @@ infrastructure. Solo, end to end.
 ### What I work in
 
 **Python · TypeScript · Go · Rust · Swift · Solidity / Move** — CI and release engineering, in-toto and Sigstore
-provenance, protocol spec work, and production services I keep running.
+provenance, protocol spec work, and production services I keep running. Anthropic-certified:
+[AI Fluency: Framework & Foundations](https://verify.skilljar.com/c/kuyf7jp4pcy7) · [Claude 101](https://verify.skilljar.com/c/54jmzoa392au) (2026).
 
 ### Also live
 

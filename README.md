@@ -35,7 +35,9 @@ provenance, protocol spec work, and production services I keep running. Anthropi
 
 [An x402 facilitator settling on Sui mainnet](https://github.com/DrVelvetFog/sui-x402-facilitator) (independent,
 non-custodial, listed in the [x402 standard's facilitators directory](https://github.com/x402-foundation/x402/pull/2619)) · [`por-sdk` on npm](https://www.npmjs.com/package/por-sdk) · [a signed and notarized macOS
-desktop agent](https://github.com/DrVelvetFog/uig-studios-ai) · three agent-accountability tools —
+desktop agent](https://github.com/DrVelvetFog/uig-studios-ai) · [Plummy](https://github.com/DrVelvetFog/plummy), a fully local
+assistant on a drawer iPhone — her face-on-the-Mac commit was selected for [XERJ](https://github.com/xerj-org/xerj)'s public
+Corpus Hub (~17k★) as a worked reference for coding agents · three agent-accountability tools —
 [rv](https://github.com/DrVelvetFog/reversible) · [ev](https://github.com/DrVelvetFog/evidence-tier) ·
 [xv](https://github.com/DrVelvetFog/verified-examples) · and text adopted verbatim into a published
 [IETF Internet-Draft](https://datatracker.ietf.org/doc/draft-morrison-consent-settlement/), credited under

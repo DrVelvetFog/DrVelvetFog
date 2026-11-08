@@ -1,7 +1,7 @@
 # Upstream — the full ledger
 
 Every contribution I've made to code I don't own: merged, open, declined, and under embargo. Statuses are
-current as of **2026-11-05** and each one links to the thread, so anything here can be checked rather than
+current as of **2026-11-08** and each one links to the thread, so anything here can be checked rather than
 taken on my word.
 
 Eleven problem domains — HTTP framing, DNS zone files, DICOM medical imaging, medical NLP, RSS parsing,
@@ -38,6 +38,12 @@ the other reporters, including an independent report from Qifan Zhang of Palo Al
 | [NLnetLabs/domain#736](https://github.com/NLnetLabs/domain/pull/736) | Rust | Any TXT record with no data, like `a. 300 IN TXT`, panicked with an index out of bounds. |
 | [NLnetLabs/domain#725](https://github.com/NLnetLabs/domain/pull/725) | Rust | An integer overflow in the zone-file `Scan` implementation for unsigned integers: `checked_mul` guarded the multiply but `+=` was unchecked, so a release build silently wrapped. `MX 65536` parsed as preference `0`. |
 
+One more, from the bodiless-status class described under the method below. actix-web's HTTP/1 client read a
+body on 1xx, 204 and 304 responses that carried `Content-Length`, so on a keep-alive connection it swallowed
+the start of the next response. Reported privately with a repro and a patch; Rob Ede fixed it in
+**actix-http 3.20.4** ([#4398](https://github.com/actix/actix-web/pull/4398)) and published
+[GHSA-fcfj-25hf-wjp3](https://github.com/actix/actix-web/security/advisories/GHSA-fcfj-25hf-wjp3) (Medium), which credits me as reporter.
+
 ## Open — under review
 
 | Project | Domain | Lang | What | Status |
@@ -45,6 +51,7 @@ the other reporters, including an independent report from Qifan Zhang of Palo Al
 | [cpython#157952](https://github.com/python/cpython/pull/157952) | HTTP stdlib | Python | `http.client` hung forever reading a 204 or 304 that carried `Transfer-Encoding: chunked`. `begin()` set `length=0` for bodiless statuses but left `self.chunked=True`, and `read()` only guarded HEAD — so no timeout, no error, just a stall. Inherited by urllib3 and requests. RFC 9112 §6.1 explicitly permits that response. ([issue #157951](https://github.com/python/cpython/issues/157951)) | **approved**, awaiting a core dev |
 | [osv-scalibr#2461](https://github.com/google/osv-scalibr/pull/2461) | dependency scanning | Go | A `pubspec.lock`, `renv.lock` or `bun.lock` containing just `null` made its extractor panic, and the panic took down the whole scan, reproduced on released osv-scanner v2.6.0 with a 5-byte file. An earlier fix (#1903) added the nil check to four other extractors and missed these three. Found by fuzzing the lockfile extractors. | open |
 | [apko#2523](https://github.com/chainguard-dev/apko/pull/2523) | container image builds | Go | apko had no fuzz targets. Added two for the APKINDEX parser, and the round-trip one failed in 65 seconds: `bufio.ScanLines` strips exactly one trailing `\r`, so a package named `0\r` is written back as `0`. That's a name change on the seam where melange writes indexes and apko reads them back. ([issue #2522](https://github.com/chainguard-dev/apko/issues/2522)) | open |
+| [actix-web#4403](https://github.com/actix/actix-web/pull/4403) | HTTP framework | Rust | The cargo-fuzz harness that found the advisory above, offered upstream: request, response and WebSocket codec targets. The response target follows the client's head-then-payload codec handoff, so a crash means the decoder broke a promise, not that the harness misused it. | open |
 | [pydicom#2372](https://github.com/pydicom/pydicom/pull/2372) | medical imaging | Python | Encapsulated Pixel Data with fewer frames than `NumberOfFrames` raised a bare `StopIteration` — which inside `map()` **silently truncates**, dropping the malformed scan *and every good one after it*. They already warned on excess frames; missing frames were never handled. ([issue #2371](https://github.com/pydicom/pydicom/issues/2371)) | review requested |
 | [purldb#907](https://github.com/aboutcode-org/purldb/issues/907) | package metadata | Python | Proposal: collect publisher provenance attestations for PyPI and npm packages. | open |
 | [feedparser#599](https://github.com/kurtmckee/feedparser/issues/599) | RSS parsing | Python | `parse()` is contracted never to raise — it sets `bozo` instead. Fuzzing found ~12 root-cause families that escape it on the released version. Three fixed, ten more minimized and tabled in the issue. | closed by me, not pursuing |
@@ -63,8 +70,7 @@ Worth listing, because a ledger that only shows wins isn't a ledger.
 
 Details withheld until the maintainers ship. Listed so the record is complete, not to claim credit early.
 
-- **actix-web / actix-http** — a response-desync issue in the client decoder. Private advisory filed via
-  GitHub's vulnerability reporting, currently in triage. Reproduction and patch supplied.
+Nothing pending right now.
 
 ---
 

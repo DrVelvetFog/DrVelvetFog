@@ -17,9 +17,11 @@ infrastructure. Solo, end to end.
   Marketplace.** One line of CI that makes "two people approved this" something a stranger can recompute
   offline. Validated against 810 production merges with zero false positives. *Apache-2.0*
 - **Eight upstream projects audited in a day** — CPython, pydicom, attohttpc, feedparser, Ersilia, purldb,
-  plus two private security reports. One is now fixed and public: NLnet Labs fixed all four bugs I found in
+  plus two private security reports. Both are now fixed and public: NLnet Labs fixed all four bugs I found in
   their Rust DNS library, a soundness bug among them, and
-  [RUSTSEC-2026-0310](https://rustsec.org/advisories/RUSTSEC-2026-0310.html) credits me by name.
+  [RUSTSEC-2026-0310](https://rustsec.org/advisories/RUSTSEC-2026-0310.html) credits me by name. actix-web
+  fixed the response desync I found in its HTTP client and published
+  [GHSA-fcfj-25hf-wjp3](https://github.com/actix/actix-web/security/advisories/GHSA-fcfj-25hf-wjp3), which credits me as reporter.
   Since then, a fuzz target on syft's SBOM decoder showed that a *valid* SPDX file could crash Anchore's
   grype scanner → [anchore/syft#5326](https://github.com/anchore/syft/pull/5326) *(merged)*, and a round-trip
   target caught syft writing SBOMs it couldn't read back → [#5349](https://github.com/anchore/syft/pull/5349) *(merged)*.
